@@ -32,8 +32,9 @@ if uploaded_file:
     # 📅 Calculate "today" based on max date
     today_date = df['date'].max() + pd.Timedelta(days=1)
 
+
     # 🧠 RFM Calculation
-    rfm = df.groupby('CustomerName').agg({
+    rfm = df.groupby(['branch', 'route', 'CustomerName']).agg({
         'date': lambda x: (today_date - x.max()).days,
         'InvoiceNumber': 'nunique',
         'NetAmount': 'sum'
