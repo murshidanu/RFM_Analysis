@@ -34,8 +34,8 @@ def home_page():
 if st.session_state.current_page == "Home":
     home_page()
 elif st.session_state.current_page == "RFM":
-    st.switch_page("pages/1.rfmsaas.py")
+    st.switch_page("pages/1_rfmsaas.py")
 elif st.session_state.current_page == "RFM_Item":
-    st.switch_page("pages/2.rfmitem.py")
+    st.switch_page("pages/2_rfmitem.py")
 elif st.session_state.current_page == "Churn":
-    st.switch_page("pages/3.churn.py")
+    st.switch_page("pages/3_churn.py")
