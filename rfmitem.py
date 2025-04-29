@@ -3,9 +3,15 @@ import pandas as pd
 import datetime as dt
 from io import BytesIO
 
-# � App Config
-st.set_page_config(page_title="FMCG RFM Analysis App", page_icon="📈", layout="wide")
+import sys
 
+# Only set page config if this script is run directly (not imported)
+if __name__ == "__main__":
+    st.set_page_config(
+        page_title="RFM Analysis",
+        page_icon="📊",
+        layout="wide"
+    )
 # 🎨 Sidebar
 st.sidebar.header("Settings")
 st.sidebar.write("Upload your FMCG sales data to perform RFM Analysis.")
