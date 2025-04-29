@@ -1,41 +1,49 @@
 import streamlit as st
-
-st.set_page_config(
-    page_title="FMCG Analytics",
-    layout="centered",
-    initial_sidebar_state="expanded"
-)
+import importlib
+import sys
 
 # Initialize session state for navigation
 if 'current_page' not in st.session_state:
     st.session_state.current_page = "Home"
 
-
-def home_page():
-    st.title("FMCG Analytics Dashboard")
-    st.write("Select an analysis type to begin:")
-
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        if st.button("📈 RFM Analysis", use_container_width=True):
-            st.session_state.current_page = "RFM"
-            st.rerun()
-    with col2:
-        if st.button("📈 RFM_Item Analysis", use_container_width=True):
-            st.session_state.current_page = "RFM_Item"
-            st.rerun()
-    with col3:
-        if st.button("⚠️ Churn Analysis", use_container_width=True):
-            st.session_state.current_page = "Churn"
-            st.rerun()
+# Navigation sidebar
+st.sidebar.title("Navigation")
+if st.sidebar.button("Home"):
+    st.session_state.current_page = "Home"
+if st.sidebar.button("RFM Analysis"):
+    st.session_state.current_page = "RFM"
+if st.sidebar.button("RFM Item Analysis"):
+    st.session_state.current_page = "RFM_Item"
+if st.sidebar.button("Churn Analysis"):
+    st.session_state.current_page = "Churn"
 
 
-# Page router
+# Function to run a script without a main() function
+def run_script(script_name):
+    try:
+        # Clear any existing modules with this name
+        if script_name in sys.modules:
+            del sys.modules[script_name]
+
+        # Import the module (this executes the script)
+        importlib.import_module(script_name)
+    except Exception as e:
+        st.error(f"Error loading {script_name}: {e}")
+        st.exception(e)
+
+
+# Render the selected page
 if st.session_state.current_page == "Home":
-    home_page()
+    # Home page content directly here
+    st.title("Home")
+    st.write("Welcome to the RFM Analysis Tool")
+    # ... other home page content
+
 elif st.session_state.current_page == "RFM":
-    st.switch_page("1_rfmsaas.py")
+    run_script("1_rfmsaas")
+
 elif st.session_state.current_page == "RFM_Item":
-    st.switch_page("2_rfmitem.py")
+    run_script("2_rfmitem")
+
 elif st.session_state.current_page == "Churn":
-    st.switch_page("3_churn.py")
+    run_script("3_churn")
