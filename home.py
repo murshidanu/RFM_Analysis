@@ -40,10 +40,10 @@ if st.session_state.current_page == "Home":
     # ... other home page content
 
 elif st.session_state.current_page == "RFM":
-    run_script("1_rfmsaas")
+    run_script("rfmsaas")
 
 elif st.session_state.current_page == "RFM_Item":
-    run_script("2_rfmitem")
+    run_script("rfmitem")
 
 elif st.session_state.current_page == "Churn":
-    run_script("3_churn")
+    run_script("churn")
