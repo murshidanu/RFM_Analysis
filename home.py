@@ -1,13 +1,12 @@
 import streamlit as st
-import sys
 
-# Only set page config if this script is run directly (not imported)
-if __name__ == "__main__":
-    st.set_page_config(
-        page_title="RFM Analysis",
-        page_icon="📊",
-        layout="wide"
-    )
+# Set page config ONCE at the very top of your main script
+st.set_page_config(
+    page_title="RFM Analysis Tool",
+    page_icon="📊",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
 
 # Rest of your imports
 import importlib

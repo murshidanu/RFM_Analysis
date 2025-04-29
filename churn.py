@@ -6,9 +6,13 @@ from datetime import datetime
 import os
 from io import BytesIO
 
-# Set page config
-st.set_page_config(page_title="FMCG Churn Analysis", page_icon="📊", layout="wide")
-
+# Only set page config if this script is run directly (not imported)
+if __name__ == "__main__":
+    st.set_page_config(
+        page_title="RFM Analysis",
+        page_icon="📊",
+        layout="wide"
+    )
 # Title
 st.title("📈 FMCG Product Churn Analysis")
 
